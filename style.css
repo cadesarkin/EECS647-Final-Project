@@ -1,0 +1,12 @@
+.horizontal
+{
+    display: flex;
+    justify-content: center;
+}
+
+.vertical
+{
+    display: flex;
+    height: 700px;
+    align-items: center;
+}
