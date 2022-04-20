@@ -1,0 +1,41 @@
+.horizontal
+{
+    display: flex;
+    justify-content: center;
+}
+
+.vertical
+{
+    display: flex;
+    height: 700px;
+    align-items: center;
+}
+
+.vertical-posts
+{
+    display: flex;
+    height: 20px;
+    align-items: center;
+}
+
+body, html {
+    margin: 0;
+    height: 100%;
+  }
+  
+  .outer {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+  }
+  
+  .row {
+    border: 1px solid #f9c815;
+    display: flex;
+    flex: 1;
+  }
+  
+  .item {
+    border: 1px solid #f9c815;
+    flex: 1;
+  }
