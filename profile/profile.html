@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Profile</Title>
+        <meta charset="utf-8">
+        </meta>
+    </head>
+    <body class="page_bg">
+        <?php 
+            session_start();
+            $mysqli = new mysqli("mysql.eecs.ku.edu", "s133w404", "ahj3Hugh", "s133w404");
+
+            if ($mysqli->connect_errno) {
+                printf("Connect failed: %s\n", $mysqli->connect_error); exit();
+                echo "<h1>Fail</h1>";
+            }
+            $userID = $_SESSION['user'];
+            $queryUser = "SELECT * FROM Users WHERE UserID='$userID'";
+            $result = $mysqli->query($queryUser);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                $row = $result->fetch_assoc();
+                echo $row['UserID'] . "<br>";
+                echo $row['UserName'] . "<br>";
+                echo $row['UserAddress'] . "<br>";
+                echo $row['UserItemsPurchase'] . "<br>";
+              } else {
+                echo "0 results";
+              }
+
+            ?>
+    </body>
+</html>
