@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Profile</Title>
+        <Title>Antonio Gibson Jersey</Title>
         <meta charset="utf-8">
         </meta>
-        <link href = "profile.css" rel = "stylesheet">
+        <link href = "posts.css" rel = "stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <style>
         body
@@ -35,7 +35,7 @@
                     <a class="nav-link active" aria-current="page" href="../shop.html">Shop</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="profile.html">Profile</a>
+                    <a class="nav-link" href="../profile/profile.html">Profile</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="../reviews/reviews.html">Reviews</a>
@@ -45,37 +45,47 @@
             </div>
         </nav>
         <?php
-            $userID = $_SESSION['user'];
-            $queryUser = "SELECT * FROM Users WHERE UserID='$userID'";
+            $postID = 4;
+            $queryUser = "SELECT * FROM Posts WHERE PostPostID='$postID'";
+            $queryUser2 = "SELECT * FROM Users, Posts WHERE UserID = PostUserID AND PostPostID=4";
             $result = $mysqli->query($queryUser);
+            $result2= $mysqli->query($queryUser2);
 
 
-            if ($result->num_rows > 0) {
+            if ($result->num_rows > 0 && $result2->num_rows > 0) {
                 // output data of each row
                 $row = $result->fetch_assoc();
+                $row2 = $result2->fetch_assoc();
                 echo "<div class = 'horizontal'>";
-                  echo "<h1 class style = 'color: #f9c815;'>" . $row['UserName'] . "</h1><br>";
+                  echo "<h1 class style = 'color: #f9c815;'>" . $row['PostDescription'] . "</h1> <br>";
+                echo "</div>";
+                echo "<div class = 'horizontal'>";
+                    echo "<img src='../img/gibson.png' width='600' height = '600'></img> <br>";
                 echo "</div>";
                 echo "<div class = 'horizontal'>";
                   echo "<div class = 'vertical'>";
                     echo "<div class = 'outer'>";
                       echo "<div class = 'row'>";
                         echo "<div class = 'item' style = 'color: #f9c815;'>";
-                          echo "Username: <br>";
-                          echo $row['UserName'] . "<br>";
+                          echo "Post ID: <br>";
+                          echo $row['PostPostID'] . "<br>";
                         echo "</div>";
                         echo "<div class = 'item' style = 'color: #f9c815;'>";
-                          echo "User ID: <br>";
-                          echo $row['UserID'] . "<br>";
+                          echo "Seller Name: <br>";
+                          echo $row2['UserName'] . "<br>";
                         echo "</div>";
                         echo "<div class = 'item' style = 'color: #f9c815;'>";
-                          echo "User Address: <br>";
-                          echo $row['UserAddress'] . "<br>";
+                          echo "Availability: <br>";
+                          echo $row['PostAvailable'] . "<br>";
                         echo "</div>";
                         echo "<div class = 'item' style = 'color: #f9c815;'>";
-                          echo "Number of Items Purchased: <br>";
-                          echo $row['UserItemsPurchase'] . "<br>";
+                          echo "Date Posted: <br>";
+                          echo $row['PostDate'] . "<br>";
                         echo "</div>";
+                        echo "<div class = 'item' style = 'color: #f9c815;'>";
+                            echo "Seller Email: <br>";
+                            echo $row2['UserEmail'] . "<br>";
+                          echo "</div>";
                       echo "</div>";
                     echo "</div>";
                   echo "</div>";
